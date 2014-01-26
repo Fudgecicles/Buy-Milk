@@ -2,7 +2,10 @@ package com.example.remindmehere;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -10,8 +13,24 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	}
+		
+		Button createBtn = (Button) findViewById(R.id.create_button);
+		Button loginBtn = (Button) findViewById(R.id.add_button);
+	
 
+	createBtn.setOnClickListener(new View.OnClickListener() {	
+		@Override
+		   public void onClick(View v) 
+		   {
+			Intent intent = new Intent(MainActivity.this, HandleReminders.class);
+			startActivity(intent); //switch activities
+		   }
+		});
+	
+	
+	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
