@@ -14,8 +14,14 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
 import com.google.android.gms.location.Geofence;
@@ -23,20 +29,18 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationClient.OnAddGeofencesResultListener;
 import com.google.android.gms.location.LocationClient.OnRemoveGeofencesResultListener;
 
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-
 public class Place extends Activity{
 	double[] lat = {1};
 	double[] longi = {1};
 	String[] name = {"poop"};
 	int length;
 	ArrayList<Geofence> fences = new ArrayList<Geofence>();
+	
+	public Place(String url) {
+		System.out.println(url);
+		new GetJson().execute(url);
+	}
+	
 	private class GetJson extends AsyncTask<String, Void, JSONArray> {
 		
 		protected JSONArray doInBackground(String... urls) {	
@@ -61,6 +65,7 @@ public class Place extends Activity{
 				}
 				is.close();
 				json = sb.toString();
+				System.out.println(json);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -97,7 +102,10 @@ public class Place extends Activity{
 			.setExpirationDuration(-1)
 			.setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
 			.setRequestId(name[k]).build();
+			fences.add(fence);
 			}
+			
+			System.out.println("Added " + fences.size() + " geofences");
 		}
 
 	}
