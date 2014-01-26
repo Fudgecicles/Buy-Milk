@@ -10,6 +10,6 @@
      
      <color name="redchart">#C11C1C</color>
      <color name="greenchart">#87D07F</color>
-     <color name="yellowchart">#EFE821</color>
-     <color name="bluechart">#1F96C9</color>
+     <color name="yellow">#E8EDE0</color>
+     <color name="bluechart">#05e0dd</color>
 </resources>

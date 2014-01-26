@@ -36,6 +36,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -87,16 +88,16 @@ public class HandleReminders extends Activity {
 	@SuppressLint("NewApi")
 	private TextView createTextView(String text) {
 	    TextView textView = new TextView(this);
-	    textView.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0.2f));
+	    textView.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0.1f));
 	    textView.setText(text);
 	    textView.setTextSize(25);
 	    return textView;
 	}
 	@SuppressLint("NewApi")
-	private Button createDltButton(final int num) {
-	    Button button = new Button(this);
-	    button.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0.8f));
-	    button.setText("Dlt");	 
+	private ImageButton createDltButton(final int num) {
+		ImageButton button = new ImageButton(this);
+	    button.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0.9f));
+	    button.setBackground(getResources().getDrawable(R.drawable.trash));
 	    button.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

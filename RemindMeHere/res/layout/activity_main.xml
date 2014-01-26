@@ -19,21 +19,30 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical" 
-        android:layout_weight="0.3" >
+        android:layout_weight="0.6" >
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
             android:src="@drawable/remindme_title" />
-
+        
         <TextView
-            android:id="@+id/reminder_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remind Me Here is a "
-            android:textSize="20sp" />
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:gravity="left"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey"
+        android:text="Keep track of everything you need to do on the go. Make reminders on your phone and view them on your Pebble smart watch. If you need to buy eggs, your Pebble can remind you when our app locates a grocery store near you through the use of Geofencing. Each user's reminders are kept in the Cloud by the use of Windows Azure and accessing your reminders on a device is as easy as logging into your Facebook account."
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+        
     </LinearLayout>
+
+    
 
     <LinearLayout
         android:id="@+id/main_layout2"
@@ -42,25 +51,28 @@
         android:layout_below="@+id/real_list_layout"
         android:layout_marginTop="50dp"
         android:layout_margin="10dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:orientation="vertical" 
-        android:layout_weight="0.7">
-
-        <Button
-            android:id="@+id/create_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left|center_vertical"
-            android:text="Create account using Facebook"
-            android:textSize="20sp" />
+        android:layout_weight="0.4">
+        
+        <ImageButton
+        android:id="@+id/authButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/white"
+        android:src="@drawable/facebook_login_button" />
 
         <Button
             android:id="@+id/location_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="left|center_vertical"
+            android:layout_marginTop="10dp"
             android:text="Find Location" />
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

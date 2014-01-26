@@ -1,17 +1,16 @@
 package com.example.remindmehere;
 
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -20,14 +19,14 @@ public class MainActivity extends Activity {
 	  private LocationManager locationManager;
 	  private String provider;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		Button createBtn = (Button) findViewById(R.id.create_button);
+	    
+		ImageButton createBtn = (ImageButton) findViewById(R.id.authButton);
 		Button locationBtn = (Button) findViewById(R.id.location_button);
-		
 	
 
 	createBtn.setOnClickListener(new View.OnClickListener() {	

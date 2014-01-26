@@ -22,11 +22,11 @@ public class NotifyMessage extends Activity {
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
 		
 		int icon = R.drawable.ic_launcher;        
-		CharSequence tickerText = "Hello"; // ticker-text
+		CharSequence tickerText = "1"; // ticker-text
 		long when = System.currentTimeMillis();         
 		Context context = getApplicationContext();     
-		CharSequence contentTitle = "Hello";  
-		CharSequence contentText = "Hello";      
+		CharSequence contentTitle = "2";  
+		CharSequence contentText = "3";      
 		Intent notificationIntent = new Intent(this, MainActivity.class);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 		Notification notification = new Notification(icon, tickerText, when);
