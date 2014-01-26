@@ -128,10 +128,10 @@ public class HandleReminders extends Activity {
 	
 	// Do add to view stuff in here. 
 	public void outputReminders(ArrayList<Reminder> reminders) {
+		realListLayout.removeAllViews();
 		// Create text view based off string. 
 		for(Reminder r: reminders)
 		{
-			
 			LinearLayout tempLayout = createLayout();
 			tempLayout.addView(createTextView(r.getText()));
 			tempLayout.addView(createDltButton(r.getId()));
@@ -152,10 +152,6 @@ public class HandleReminders extends Activity {
 			}
 		}
 		return reminders;
-	}
-	
-	public void addReminder(String reminder) {
-		
 	}
 
 	private class PopulateReminders extends AsyncTask<Void, Void, ArrayList<Reminder>> {
@@ -215,7 +211,7 @@ public class HandleReminders extends Activity {
 			HttpPost post = new HttpPost("http://remindmehere.cloudapp.net/reminders.json");
 			
 			List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-			pairs.add(new BasicNameValuePair("name", tasks[0]));
+			pairs.add(new BasicNameValuePair("reminder[name]", tasks[0]));
 			try {
 				post.setEntity(new UrlEncodedFormEntity(pairs));
 			} catch (UnsupportedEncodingException e) {
@@ -266,9 +262,10 @@ public class HandleReminders extends Activity {
 			InputStream is = null;
 			try {
 				String url_str = "http://remindmehere.cloudapp.net/reminders/" + ids[0] + ".json";
+				System.out.println("Delete URL: " + url_str);
 				URL url = new URL(url_str);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-				connection.setDoOutput(true);
+//				connection.setDoOutput(true);
 				connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 				connection.setRequestMethod("DELETE");
 				connection.connect();
