@@ -107,21 +107,25 @@ public class Place extends Activity{
 			
 			System.out.println("Added " + fences.size() + " geofences");
 		}
+		handler dude  = new handler();
 
 	}
 	public class handler extends FragmentActivity implements
 				ConnectionCallbacks,
 				OnConnectionFailedListener,
 				OnAddGeofencesResultListener{
-		private LocationClient client = new LocationClient(this,this,this);
-		private PendingIntent pIntent;
-		private boolean inProgress;
+		private LocationClient client;
+		public handler (){
+			System.out.println("did we get this far");
+			client = new LocationClient(this,this,this);
+			populateGeofences();
+		}
 		
 		public void populateGeofences(){
 			for(int k=0;k<length;k++){
 				Intent intent = new Intent(this,NotifyMessage.class);
 				intent.putExtra("name", name[k]);
-				pIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_ONE_SHOT);
+				PendingIntent pIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_ONE_SHOT);
 				List<Geofence> single = (List<Geofence>) fences.get(k); 
 				client.addGeofences(single, pIntent, this);
 			}
