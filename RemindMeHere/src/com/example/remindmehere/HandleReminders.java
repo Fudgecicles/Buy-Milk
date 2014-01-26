@@ -23,6 +23,9 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -41,9 +44,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HandleReminders extends Activity {
 
+	  private Double latituteField;
+	  private Double longitudeField;
+	  private LocationManager locationManager;
+	  private String provider;
 	
 	ArrayList <Reminder> arrList = new ArrayList<Reminder>();
     LinearLayout realListLayout; 
@@ -126,6 +134,17 @@ public class HandleReminders extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	  public void onLocationChanged(Location location) {
+		    Double lat = location.getLatitude();
+		    Double lng = location.getLongitude();
+		    latituteField = lat;
+		    longitudeField = lng;
+		    Toast.makeText(this, "Latitude: " + latituteField + " - Longitude: " + longitudeField,
+			        Toast.LENGTH_SHORT).show();
+		    
+		    
+		  }
 	
 	// Do add to view stuff in here. 
 	public void outputReminders(ArrayList<Reminder> reminders) {
@@ -254,6 +273,31 @@ public class HandleReminders extends Activity {
 		protected void onPostExecute(ArrayList<Reminder> reminders) {
 			// Call the print to screen function. 
 			outputReminders(reminders);
+			
+			// Get the location manager
+		    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		    // Define the criteria how to select the locatioin provider -> use
+		    // default
+		    Criteria criteria = new Criteria();
+		    provider = locationManager.getBestProvider(criteria, false);
+		    Location location = locationManager.getLastKnownLocation(provider);
+
+		    // Initialize the location fields
+		    if (location != null) {
+		      System.out.println("Provider " + provider + " has been selected.");
+		      onLocationChanged(location);
+		      
+		      String url = "http://remindmehere.cloudapp.net/current_location?lat=" + location.getLatitude() 
+			    		+ "&long=" + location.getLongitude();
+			    new Place(url);
+			    
+		    } else {
+		      latituteField  = -1.0;
+		      longitudeField = -1.0;
+		    }
+		    
+		    
+		    
 		}
 	
 	}
