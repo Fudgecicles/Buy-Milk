@@ -35,7 +35,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 	    
 		ImageButton createBtn = (ImageButton) findViewById(R.id.authButton);
-		Button locationBtn = (Button) findViewById(R.id.location_button);
 	
 		Session session = Session.getActiveSession();
         if (session == null) {
@@ -51,38 +50,16 @@ public class MainActivity extends Activity {
             }
         }
 		
-        onClickLogin();
+//        onClickLogin();
 		
-//	createBtn.setOnClickListener(new View.OnClickListener() {	
-//		@Override
-//		   public void onClick(View v) 
-//		   {
-//			Intent intent = new Intent(MainActivity.this, HandleReminders.class);
-//			startActivity(intent); //switch activities
-//		   }
-//		});
-	
-	locationBtn.setOnClickListener(new View.OnClickListener() {		
+	createBtn.setOnClickListener(new View.OnClickListener() {	
 		@Override
-		public void onClick(View v) {
-		    // Get the location manager
-		    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		    // Define the criteria how to select the locatioin provider -> use
-		    // default
-		    Criteria criteria = new Criteria();
-		    provider = locationManager.getBestProvider(criteria, false);
-		    Location location = locationManager.getLastKnownLocation(provider);
-
-		    // Initialize the location fields
-		    if (location != null) {
-		      System.out.println("Provider " + provider + " has been selected.");
-		      onLocationChanged(location);
-		    } else {
-		      latituteField  = -1.0;
-		      longitudeField = -1.0;
-		    }
-		  }
-	});
+		   public void onClick(View v) 
+		   {
+			Intent intent = new Intent(MainActivity.this, HandleReminders.class);
+			startActivity(intent); //switch activities
+		   }
+		});
 	
 	}
 	  public void onLocationChanged(Location location) {

@@ -32,7 +32,7 @@ public class LoginController extends AsyncTask<String, Void, Void>{
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub
-		String url_str = "http://remindmehere.cloudapp.net/android/auth/callback?facebook&token=" + arg0[0] + "&id=" + userId;
+		String url_str = "http://remindmehere.cloudapp.net/android/auth/callback?provider=facebook&token=" + arg0[0] + "&id=" + userId;
 		System.out.println(url_str);
 		URL url;
 		try {

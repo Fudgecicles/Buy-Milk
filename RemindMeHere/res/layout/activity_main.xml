@@ -61,16 +61,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:background="@color/white"
-        android:src="@drawable/facebook_login_button"
-        android:onClick="onClickLogin" />
-
-        <Button
-            android:id="@+id/location_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left|center_vertical"
-            android:layout_marginTop="10dp"
-            android:text="Find Location" />
+        android:src="@drawable/facebook_login_button" />
 
     </LinearLayout>
 
