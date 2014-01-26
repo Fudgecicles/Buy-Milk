@@ -61,7 +61,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:background="@color/white"
-        android:src="@drawable/facebook_login_button" />
+        android:src="@drawable/facebook_login_button"
+        android:onClick="onClickLogin" />
 
         <Button
             android:id="@+id/location_button"

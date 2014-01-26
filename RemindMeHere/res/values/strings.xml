@@ -5,5 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="empty"> </string>
-
+	<string name="app_id">616031641785322</string> 
+	
 </resources>
