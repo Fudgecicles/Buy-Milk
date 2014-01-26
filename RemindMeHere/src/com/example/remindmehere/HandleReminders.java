@@ -265,7 +265,6 @@ public class HandleReminders extends Activity {
 				System.out.println("Delete URL: " + url_str);
 				URL url = new URL(url_str);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//				connection.setDoOutput(true);
 				connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 				connection.setRequestMethod("DELETE");
 				connection.connect();
