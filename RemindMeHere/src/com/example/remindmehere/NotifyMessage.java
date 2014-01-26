@@ -17,16 +17,16 @@ public class NotifyMessage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
-		
+		String text =  getIntent().getStringExtra("name");
 		String ns = Context.NOTIFICATION_SERVICE;
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
 		
 		int icon = R.drawable.ic_launcher;        
-		CharSequence tickerText = "Hello"; // ticker-text
+		CharSequence tickerText = text; // ticker-text
 		long when = System.currentTimeMillis();         
 		Context context = getApplicationContext();     
-		CharSequence contentTitle = "Hello";  
-		CharSequence contentText = "Hello";      
+		CharSequence contentTitle = "Remind Me";  
+		CharSequence contentText = text;      
 		Intent notificationIntent = new Intent(this, MainActivity.class);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 		Notification notification = new Notification(icon, tickerText, when);
