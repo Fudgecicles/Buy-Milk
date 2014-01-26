@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+
 public class MainActivity extends Activity {
 	  private Double latituteField;
 	  private Double longitudeField;
@@ -28,11 +29,16 @@ public class MainActivity extends Activity {
 		ImageButton createBtn = (ImageButton) findViewById(R.id.authButton);
 		Button locationBtn = (Button) findViewById(R.id.location_button);
 	
+		GPSTracker tracker = new GPSTracker(this);
+		
+		System.out.println(tracker.getLatitude() + " - " + tracker.getLongitude());
 
 	createBtn.setOnClickListener(new View.OnClickListener() {	
 		@Override
 		   public void onClick(View v) 
 		   {
+			
+			
 			Intent intent = new Intent(MainActivity.this, HandleReminders.class);
 			startActivity(intent); //switch activities
 		   }
@@ -42,25 +48,11 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 		    // Get the location manager
-		    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		    // Define the criteria how to select the locatioin provider -> use
-		    // default
-		    Criteria criteria = new Criteria();
-		    provider = locationManager.getBestProvider(criteria, false);
-		    Location location = locationManager.getLastKnownLocation(provider);
-
-		    // Initialize the location fields
-		    if (location != null) {
-		      System.out.println("Provider " + provider + " has been selected.");
-		      onLocationChanged(location);
-		    } else {
-		      latituteField  = -1.0;
-		      longitudeField = -1.0;
-		    }
-		  }
-	});
+			
+	}});
 	
 	}
+	/*
 	  public void onLocationChanged(Location location) {
 	    Double lat = location.getLatitude();
 	    Double lng = location.getLongitude();
@@ -86,7 +78,7 @@ public class MainActivity extends Activity {
 	        Toast.LENGTH_SHORT).show();
 	  }
 	
-	
+	*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
