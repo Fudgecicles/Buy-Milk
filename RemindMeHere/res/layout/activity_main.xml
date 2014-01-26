@@ -54,6 +54,13 @@
             android:text="Create account using Facebook"
             android:textSize="20sp" />
 
+        <Button
+            android:id="@+id/location_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="Find Location" />
+
     </LinearLayout>
 
 </RelativeLayout>
