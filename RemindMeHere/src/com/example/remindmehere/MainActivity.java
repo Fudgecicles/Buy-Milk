@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 		@Override
 		   public void onClick(View v) 
 		   {
-			Intent intent = new Intent(MainActivity.this, Notification.class);
+			Intent intent = new Intent(MainActivity.this, NotifyMessage.class);
 			startActivity(intent); //switch activities
 		   }
 		});
